@@ -1,0 +1,12 @@
+,method,variables,parameters,train_MSE,test_MSE
+0,simple mean,['mean_points'],{},0.023013260171752162,0.02335935757086313
+1,simple mean,['country mean_points'],{},0.021858963381043567,0.022136200369281312
+2,KNN,"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year']",{'regressor__n_neighbors': 19},0.013150010146854732,0.013030771255824717
+3,LR Lasso (L1),"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year']",{'regressor__alpha': 1e-05},0.01282297680557958,0.01292813390726868
+4,LR Ridge (L2),"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year']",{'regressor__alpha': 1},0.012850871999289862,0.012933245896966976
+5,Random Forest,"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year']","{'regressor__max_depth': 32, 'regressor__n_estimators': 1000}",0.012073039605996408,0.012054727065022763
+6,NLP Bag of Words + LR,description,"{'regressor': Ridge(alpha=0.1), 'regressor__alpha': 10, 'vectorizer__max_features': None}",0.007155846465268244,0.007156147181086655
+7,NLP TFIDF + LR,description,"{'regressor': Ridge(alpha=0.1), 'regressor__alpha': 0.1, 'vectorizer__max_features': 5000}",0.007156085530136025,0.007165866666484999
+8,Random Forest,['description'],"{'regressor__max_depth': 32, 'regressor__n_estimators': 500, 'vectorizer': TfidfVectorizer(max_features=5000, stop_words='english'), 'vectorizer__max_features': 5000}",0.012005873002052256,0.012018246873796233
+9,All variables (NLP Bag of Words) + LR,"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year', 'description']","{'regressor': Ridge(alpha=0.1), 'regressor__alpha': 10, 'transformer__text__vectorizer__max_features': 5000}",0.005578277103710534,0.0055526969891779455
+10,All variables (NLP TFIDF) + LR,"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year', 'description']","{'regressor': Ridge(alpha=0.1), 'regressor__alpha': 0.1, 'transformer__text__vectorizer__max_features': 5000}",0.005469467229190226,0.005435567811260012

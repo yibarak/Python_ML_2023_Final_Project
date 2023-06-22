@@ -1,0 +1,15 @@
+,method,variables,parameters,train_MSE,test_MSE
+0,simple mean,['mean_points'],{},0.0230132601717521,0.0233593575708631
+1,simple mean,['country mean_points'],{},0.0218589633810435,0.0221362003692813
+2,KNN,"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year']",{'regressor__n_neighbors': 19},0.0131500101468547,0.0130307712558247
+3,LR Lasso (L1),"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year']",{'regressor__alpha': 1e-05},0.0128229768055795,0.0129281339072686
+4,LR Ridge (L2),"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year']",{'regressor__alpha': 1},0.0128508719992898,0.0129332458969669
+5,Random Forest,"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year']","{'regressor__max_depth': 32, 'regressor__n_estimators': 1000}",0.0120730396059964,0.0120547270650227
+6,NLP Bag of Words + LR,description,"{'regressor': Ridge(alpha=0.1), 'regressor__alpha': 10, 'vectorizer__max_features': None}",0.0071558464652682,0.0071561471810866
+7,NLP TFIDF + LR,description,"{'regressor': Ridge(alpha=0.1), 'regressor__alpha': 0.1, 'vectorizer__max_features': 5000}",0.007156085530136,0.0071658666664849
+8,Random Forest,['description'],"{'regressor__max_depth': 32, 'regressor__n_estimators': 500, 'vectorizer': TfidfVectorizer(max_features=5000, stop_words='english'), 'vectorizer__max_features': 5000}",0.0120058730020522,0.0120182468737962
+9,All variables (NLP Bag of Words) + LR,"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year', 'description']","{'regressor': Ridge(alpha=0.1), 'regressor__alpha': 10, 'transformer__text__vectorizer__max_features': 5000}",0.0055782771037105,0.0055526969891779
+10,All variables (NLP TFIDF) + LR,"['price_log', 'country', 'province', 'region_1', 'variety', 'winery', 'year', 'description']","{'regressor': Ridge(alpha=0.1), 'regressor__alpha': 0.1, 'transformer__text__vectorizer__max_features': 5000}",0.0054694672291902,0.00543556781126
+11,Embedding without pre-train,['description'],"{'desc_words': 5000, 'desc_len': 135, 'activation': 'sigmoid', 'units layer 1': 128, 'units layer 2': 4}",0.004404000006616116,0.006614403799176216
+12,Embedding without pre-train,"['country', 'province', 'region_1', 'variety', 'winery', 'year', 'price_log', 'description']","{'desc_words': 5000, 'desc_len': 135, 'activation': 'sigmoid', 'units layer 1': 32, 'units layer 2': 32}",0.0026995150838047266,0.005142448004335165
+13,Embedding with GloVe pre-train embbedings,"['country', 'province', 'region_1', 'variety', 'winery', 'year', 'price_log', 'description']","{'desc_words': 5000, 'trainable': True, 'desc_len': 60, 'activation': 'sigmoid', 'units layer 1': 128, 'units layer 2': 16}",0.0035190179478377104,0.007485389709472656
